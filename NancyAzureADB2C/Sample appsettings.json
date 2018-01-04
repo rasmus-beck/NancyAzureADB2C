@@ -1,0 +1,16 @@
+﻿{
+  "AzureAdB2C": {
+    "Tenant": "[tenant name].onmicrosoft.com",
+    "ClientId": "[Application client id guid]",
+    "Policy": "[Policy name as described here: https://azure.microsoft.com/documentation/articles/active-directory-b2c-reference-policies]",
+
+    "ScopeRead": "demo.read",
+    "ScopeWrite": "demo.write"
+  },
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  }
+}
