@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Nancy.Owin;
+using System;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,7 +44,8 @@ namespace NancyAzureADB2C
                     jwtOptions.Audience = Configuration["AzureAdB2C:ClientId"];
                     jwtOptions.Events = new JwtBearerEvents
                     {
-                        OnAuthenticationFailed = AuthenticationFailed
+                        OnAuthenticationFailed = AuthenticationFailed,
+                        OnChallenge = Challenged
                     };
                 });
         }
@@ -79,6 +81,12 @@ namespace NancyAzureADB2C
             var s = $"AuthenticationFailed: {arg.Exception.Message}";
             arg.Response.ContentLength = s.Length;
             arg.Response.Body.Write(Encoding.UTF8.GetBytes(s), 0, s.Length);
+            return Task.FromResult(0);
+        }
+
+        private Task Challenged(JwtBearerChallengeContext arg)
+        {
+            Console.WriteLine(arg.Error);
             return Task.FromResult(0);
         }
     }
