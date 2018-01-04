@@ -6,6 +6,7 @@ using Nancy.Owin;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace NancyAzureADB2C
 {
@@ -21,7 +22,7 @@ namespace NancyAzureADB2C
         {
             var ctxKeyPair = Context.GetOwinEnvironment().FirstOrDefault(x => x.Key == typeof(HttpContext).FullName);
             var httpContext = ctxKeyPair.Value as HttpContext;
-            await httpContext.Authentication.ChallengeAsync(new AuthenticationProperties { RedirectUri = "/" });
+            await httpContext.Authentication.ChallengeAsync(JwtBearerDefaults.AuthenticationScheme, new AuthenticationProperties { RedirectUri = "/" });
             
             var result = new HashSet<int>();
             var random = new Random();
