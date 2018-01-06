@@ -30,17 +30,17 @@ Open a tab in postman and issue a GET request to the random numbers API: https:/
 
 When you try to request the random numbers you will be met by a 401 - Unauthorized response. That is expected since you haven't provided a valid authentication token. 
 
-Press the Authorization tab in Postman and chose OAuth2 as the type. Chose to add the authorization data to "Request headers". Then on your right is a button "Get New Access Token". Press that and fill in the details that match the AD you created. You can find more information about your AD here: https://login.microsoftonline.com/tfp/[Tenant name].onmicrosoft.com/[Policy_Name]/v2.0/.well-known/openid-configuration
+Press the Authorization tab in Postman and chose OAuth2 as the type. Chose to add the authorization data to "Request headers". Then on your right is a button "Get New Access Token". Press that and fill in the details that match the AD you created. You can find more information about your AD here: https://login.microsoftonline.com/tfp/[Tenant_name].onmicrosoft.com/[Policy_Name]/v2.0/.well-known/openid-configuration
 
 | Field | Value |
 |-------|-------|
 |Token Name | AzureADB2C_JWT_Token|
 |Grant Type | Implicit|
 |Callback URL | Not really important for this sample, but this needs to be registered on the application in your Azure AD (Step 4 in the guide I linked to). I have used https://localhost:44340/signin-oidc although it doesn't exist in the API.|
-|Auth URL | https://login.microsoftonline.com/te/[Tenant name].onmicrosoft.com/[Policy_Name]/oauth2/v2.0/authorize|
+|Auth URL | https://login.microsoftonline.com/te/[Tenant_name].onmicrosoft.com/[Policy_Name]/oauth2/v2.0/authorize|
 |Client ID | The GUID of your application in Azure AD (Step 4 in the guide I linked to)|
 |Client Secret | The key created under the Keys tab of the application in Azure.|
-|Scope | https://[Tenant name].onmicrosoft.com/[Application name]/[Scope name]|
+|Scope | https://[Tenant_name].onmicrosoft.com/[Application_name]/[Scope_name]|
 |State | Blank|
 |Client authentication | "Send as Basic Auth Header"|
 
