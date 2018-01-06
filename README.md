@@ -8,6 +8,7 @@ I started looking for examples of how to do this using NancyFx on .NET Core 2.0 
 
 Since there is no example out there, I have decided to document my findings with a little git repo. This sample shows how to build a NancyFX web API with Azure AD B2C using the ASP.Net Core JWT Bearer middleware.
 
+## Set the stage
 To begin with I will just set the stage for what I am actually doing here.
 
 I want to create a REST API, that can serve as a backend for a client side javascript app running in a browser. To solve that problem I will make use of the OAuth2 Implicit Grant flow.
@@ -16,11 +17,14 @@ This repository does not contain a client. It only contains the REST API. I will
 
 You will need an Azure account to get this sample to work. All you need is a free account, since all this can be done in the free tier. 
 
+## Set up your Azure AD
 I used this sample as inspiration for my sample: [Azure AD B2C .NET Core Web Api Sample](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi).
 Follow steps 2 through 5 to set up your Azure AD. For me to get this to work and actually authenticate successfully I also had to add a published scope. I just added one called read:org. I also created a client secret under the Keys tab of the application, you will need that when requesting a token.
 
+## Configure your application
 Once you have gone through the steps described above you need to copy the file 'Sample appsettings.json' to a file called 'appsettings.json' and fill in the values that are missing.
 
+## Test with PostMan
 Once those configuration values have been entered you can test out authentication using Postman.
 Open a tab in postman and issue a GET request to the random numbers API: https://localhost:44382/numbers. The project is configured to use IISExpress and a self signed SSL certificate. 
 
@@ -42,4 +46,5 @@ Press the Authorization tab in Postman and chose OAuth2 as the type. Chose to ad
 
 Press the "Request Token" button and you should be asked to log in to your AD. If you haven't already created a user, you will be able to do so here. Once you have successfully authentication you will be presented with a Bearer token. Press the "Use Token" button and try your request again. You should now see an array of random numbers returned.
 
+## Thank you
 A big thank you to Kristian Hellang for helping out when I got stuck!
