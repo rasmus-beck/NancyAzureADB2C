@@ -4,8 +4,8 @@
     "ClientId": "[Application client id guid]",
     "Policy": "[Policy name as described here: https://azure.microsoft.com/documentation/articles/active-directory-b2c-reference-policies]",
 
-    "ScopeRead": "demo.read",
-    "ScopeWrite": "demo.write"
+    "ScopeRead": "org:read",
+    "ScopeWrite": "org:write"
   },
   "Logging": {
     "IncludeScopes": false,

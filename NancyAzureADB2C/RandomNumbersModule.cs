@@ -9,7 +9,6 @@ namespace NancyAzureADB2C
     {
         public RandomNumbersModule()
         {
-            //this.RequiresAuthentication();
             this.RequiresAspNetCoreAuthentication();
             Get("/numbers", _ => { return GetListOfRandomNumbers(); });
         }

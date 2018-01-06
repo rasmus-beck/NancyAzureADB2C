@@ -1,11 +1,7 @@
 ﻿using Nancy;
 using Nancy.Bootstrapper;
-using Nancy.Owin;
 using Nancy.Responses.Negotiation;
-using Nancy.TinyIoc;
 using System;
-using System.Linq;
-using System.Security.Claims;
 
 namespace NancyAzureADB2C
 {
